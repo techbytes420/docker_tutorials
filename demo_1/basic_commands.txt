@@ -1,0 +1,17 @@
+Image commands:
+docker pull nginx
+docker rmi image_id
+docker image ls
+docker pull imagename
+docker image inspect image_id
+
+Container commands:
+docker run nginx
+docker stop container_id
+docker rm container_id
+docker rm container_id -f
+docker run -p 80:80 -d nginx
+docker ps -a -q | xargs docker rm -f
+docker ps -a
+docker logs container_id -f
+docker exec -it webserver bash

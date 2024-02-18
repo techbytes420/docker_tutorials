@@ -1,0 +1,12 @@
+docker network ls
+docker network create my-network2
+
+docker run -p 27018:27017 \
+-e MONGO_INITDB_ROOT_USERNAME=root \
+-e MONGO_INITDB_ROOT_PASSWORD=1234 \
+-e MONGO_INITDB_DATABASE=admin \
+--name mongodb \
+--network my-network2 \
+ mongo:4.4
+
+docker run -p 8001:8000 -v "%cd%/:/var/www" --network my-network2 node-app

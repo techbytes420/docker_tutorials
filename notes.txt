@@ -1,0 +1,14 @@
+export DOCKER_BUILDKIT=0
+export COMPOSE_DOCKER_CLI_BUILD=0
+
+RUN echo "Acquire::Check-Valid-Until \"false\";\nAcquire::Check-Date \"false\";" | cat > /etc/apt/apt.conf.d/10no--check-valid-until
+
+sudo date +%T -s '13:09:00'
+
+volumes:
+  webserver-api-vendor:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ./services/laravel-api/vendor/
